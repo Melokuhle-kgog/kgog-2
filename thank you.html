@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You | Kgokagano-Sechaba</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg-dark:#0b1220;
+  --accent:#f472b6;
+  --accent-2:#7c3aed;
+  --muted:rgba(255,255,255,0.95);
+}
+
+body{
+  margin:0; padding:0;
+  font-family:'Montserrat',sans-serif;
+  background:var(--bg-dark);
+  color:var(--muted);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  text-align:center;
+}
+
+h1{
+  font-family:'Pacifico',cursive;
+  font-size:3rem;
+  color:var(--accent);
+  margin-bottom:1rem;
+  min-height:4rem;
+}
+
+p{
+  font-size:1.2rem;
+  margin-bottom:2rem;
+  min-height:3rem;
+}
+
+button{
+  background: linear-gradient(90deg,var(--accent-2),#ff9ecf);
+  color:#fff;
+  font-family:'Pacifico',cursive;
+  font-size:1.2rem;
+  padding:12px 24px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  transition:0.3s transform ease, 0.3s background ease;
+}
+
+button:hover{
+  background: linear-gradient(90deg,#ff9ecf,var(--accent-2));
+  transform:translateY(-4px) scale(1.05);
+}
+
+/* Footer */
+footer{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:var(--bg-dark);
+  text-align:center;
+  padding:12px 0;
+  font-size:0.9rem;
+  color:var(--muted);
+}
+
+/* Responsive */
+@media(max-width:768px){
+  h1{ font-size:2.2rem; }
+  p{ font-size:1rem; }
+  button{ font-size:1rem; padding:10px 20px; }
+}
+
+@media(max-width:480px){
+  h1{ font-size:1.8rem; }
+  p{ font-size:0.95rem; }
+  button{ font-size:0.95rem; padding:8px 16px; }
+}
+</style>
+</head>
+
+<body>
+
+<h1 id="thankText"></h1>
+<p id="messageText"></p>
+<a href="index.html"><button id="homeBtn">Back to Home</button></a>
+
+<footer>
+  © 2025 Kgokagano-Sechaba Community Centre — Empowering Survivors, Building Hope
+</footer>
+
+<script>
+// Texts to animate
+const headingText = "Thank You!";
+const messageText = "Your message has been received. We will get in touch with you shortly.";
+
+// DOM elements
+const thankEl = document.getElementById("thankText");
+const messageEl = document.getElementById("messageText");
+
+// Typing function
+function typeText(el, text, speed=120, callback=null){
+    let index=0;
+    function typeLetter(){
+        if(index < text.length){
+            el.innerHTML += text.charAt(index);
+            index++;
+            setTimeout(typeLetter, speed);
+        } else if(callback){
+            callback();
+        }
+    }
+    typeLetter();
+}
+
+// Start typing sequence
+window.addEventListener('DOMContentLoaded', () => {
+    typeText(thankEl, headingText, 150, () => {
+        typeText(messageEl, messageText, 50);
+    });
+});
+</script>
+
+</body>
+</html>
